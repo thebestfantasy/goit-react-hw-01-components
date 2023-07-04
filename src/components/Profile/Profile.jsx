@@ -1,5 +1,13 @@
 import PropTypes from 'prop-types';
-// import user from './user.json';
+import {
+  Container,
+  List,
+  ListItem,
+  Name,
+  Quantity,
+  Social,
+  Stats,
+} from './Profile.styled';
 
 export const Profile = user => {
   const {
@@ -10,28 +18,30 @@ export const Profile = user => {
     stats: { followers, views, likes },
   } = user;
   return (
-    <div className="profile">
+    <Container>
       <div className="description">
-        <img src={avatar} alt="User avatar" className="avatar" />
-        <p className="name">{username}</p>
-        <p className="tag">@{tag}</p>
-        <p className="location">{location}</p>
+        <img src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <Social>@{tag}</Social>
+        <Social>{location}</Social>
       </div>
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{followers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{views}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <List>
+          <ListItem>
+            <span>Followers</span>
+            <Quantity>{followers}</Quantity>
+          </ListItem>
+          <ListItem>
+            <span>Views</span>
+            <Quantity>{views}</Quantity>
+          </ListItem>
+          <ListItem>
+            <span>Likes</span>
+            <Quantity>{likes}</Quantity>
+          </ListItem>
+        </List>
+      </Stats>
+    </Container>
   );
 };
 

@@ -1,19 +1,24 @@
+import css from './transaction.module.css';
+
 export const Transactions = ({ items }) => {
   return (
-    <table className="123">
+    <table className={css.transactionTable}>
       <thead>
-        <tr>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Currency</th>
+        <tr className={css.title}>
+          <th className={css.column}>Type</th>
+          <th className={css.column}>Amount</th>
+          <th className={css.column}>Currency</th>
         </tr>
       </thead>
       <tbody>
-        {items.map(item => (
-          <tr key={item.id}>
-            <td>{item.type}</td>
-            <td>{item.amount}</td>
-            <td>{item.currency}</td>
+        {items.map((item, idx) => (
+          <tr
+            key={item.id}
+            className={idx % 2 === 0 ? css.evenRow : css.oddRow}
+          >
+            <td className={css.column}>{item.type}</td>
+            <td className={css.column}>{item.amount}</td>
+            <td className={css.column}>{item.currency}</td>
           </tr>
         ))}
       </tbody>

@@ -1,13 +1,19 @@
+import css from './friends.module.css';
+
 export const FriendList = ({ friends }) => {
   return (
-    <ul className="friend-list">
-      {friends.map(friend => (
-        <li key={friend.id}>
-          <span className="status">{friend.isOnline}</span>
-          <img src={friend.avatar} alt={friend.name} />
-          <p className="name">{friend.name}</p>
-        </li>
-      ))}
-    </ul>
+    <section className={css.friendSection}>
+      <ul className={css.friendList}>
+        {friends.map(friend => (
+          <li key={friend.id} className={css.listItem}>
+            <span className={friend.isOnline ? css.online : css.offline}>
+              {friend.isOnline}
+            </span>
+            <img src={friend.avatar} alt={friend.name} className={css.photo} />
+            <p className={css.name}>{friend.name}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
